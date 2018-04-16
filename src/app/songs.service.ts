@@ -22,38 +22,23 @@ export class SongsService {
   addSong(song) {
     console.log(song);
     return this.http.post('/api/songs', song).subscribe(
-      res => {
-        console.log(res);
-      },
-      err => {
-        console.log('Error occured');
-
-      }
+      res => res.json(),
+      err => err.json()
     );
   }
 
 
   updateSong(song) {
     return this.http.patch('/api/songs/' + song._id, song).subscribe(
-      res => {
-        console.log(res);
-      },
-      err => {
-        console.log('Error occurred!');
-
-      }
+      res => res.json(),
+      err => err.json()
     );
   }
 
   deleteSong(song) {
     return this.http.delete('/api/songs/' + song._id).subscribe(
-      res => {
-        console.log(res);
-      },
-      err => {
-        console.log('Error occurred!');
-
-      }
+      res => res.json(),
+      err => err.json()
     );
   }
 
