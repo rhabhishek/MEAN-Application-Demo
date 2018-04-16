@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="song-card p-md-1 border border-light bg-success text-white m-1" >
+        <div class=" col-md-12">
+          <span class=" btn-lg oi oi-plus" aria-hidden="true"></span>
+          <p>Add Song</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" placeholder="Song Title" ngModel name="title" #title="ngModel" required>
+        <span class="help-block" *ngIf="!title.valid && title.touched">Please enter a valid Title.</span>
+      </div>
+      <div class="form-group">
+        <label for="artist">Artist</label>
+        <input type="text" class="form-control" id="artist" placeholder="Artist" ngModel name="artist" #artist="ngModel" required>
+        <span class="help-block" *ngIf="!artist.valid && artist.touched">Please enter a valid Artist name.</span>
+      </div>
+      <div class="form-group">
+        <label for="decade">Decade</label>
+        <input type="text" class="form-control" id="decade" placeholder="Decade" ngModel name="decade" >
+      </div>
+      <div class="form-group">
+        <label for="weeksAtOne">Weeks at Top 1 position</label>
+        <input type="text" class="form-control" id="weeksAtOne" placeholder="Weeks at Top 1 position" ngModel name="weeksAtOne">
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+    </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="container bg-text-muted">
+  <div class="row col-md-12">
+    <a routerLink="/add" ><div class="song-card border border-light bg-success text-white" >
+      <div class=" col-md-12">
+          <span class=" btn-lg oi oi-plus" aria-hidden="true"></span>
+        <p>Add Song</p>
+      </div>
+    </div></a>
+    <app-song-list-item *ngFor="let songElem of songs" [song]="songElem"></app-song-list-item>
+
+  </div>
+</div>
