@@ -1,6 +1,5 @@
 import {Component, ViewEncapsulation, OnInit} from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import {SongsService} from '../songs.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -16,6 +15,7 @@ export class SongDetailsComponent implements OnInit {
   song;
   constructor( private modalService: NgbModal,
                private route: ActivatedRoute,
+               private router: Router,
                private  songsService: SongsService) { }
 
   ngOnInit() {
@@ -25,14 +25,16 @@ export class SongDetailsComponent implements OnInit {
     });
   }
 
-  onDeleteSubmit(form: NgForm) {
-    console.log(this.song);
+  onDeleteSubmit() {
+    console.log(this.song._id);
     this.songsService.deleteSong(this.song);
+    this.router.navigate(['/songs']);
   }
 
-  onUpdateSubmit(updateForm: NgForm) {
+  onUpdateSubmit() {
     console.log(this.song);
     this.songsService.updateSong(this.song);
+    this.router.navigate(['/songs']);
   }
 
   openVerticallyCentered(content) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {SongsService} from '../songs.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-song',
@@ -9,7 +10,8 @@ import {SongsService} from '../songs.service';
 })
 export class AddSongComponent implements OnInit {
 
-  constructor(private songsService: SongsService) { }
+  constructor(private songsService: SongsService,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -18,5 +20,6 @@ export class AddSongComponent implements OnInit {
     const song = form.value;
     console.log(song);
     this.songsService.addSong(song);
+    this.router.navigate(['/songs']);
   }
 }
